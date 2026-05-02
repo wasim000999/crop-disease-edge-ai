@@ -34,6 +34,9 @@ def run_inference():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+from flask_cloudflared import run_with_cloudflared
+
 if __name__ == '__main__':
-    # Running locally simulating Edge Device UI
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Running locally with Cloudflare tunnel for public access
+    run_with_cloudflared(app)
+    app.run(host='0.0.0.0', port=5000, debug=False)

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EdgeVision | Crop Disease Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <meta name="description" content="On-device crop disease detection using efficient edge AI models.">
+</head>
+<body>
+    <div class="background-mesh"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">🌿 EdgeVision</div>
+            <h1>Crop Disease Detection</h1>
+            <p>100% On-Device Inference. Zero Cloud Dependency.</p>
+        </header>
+
+        <main class="glass-panel">
+            <div class="upload-section" id="uploadArea">
+                <input type="file" id="imageInput" accept="image/*" hidden>
+                <div class="upload-prompt" id="uploadPrompt">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <p>Click or Drag to Upload Crop Image</p>
+                </div>
+                <img id="imagePreview" src="" alt="Image Preview" style="display: none;">
+            </div>
+
+            <button id="analyzeBtn" class="btn-primary" disabled>
+                <span>Run Edge Inference</span>
+                <div class="loader" id="btnLoader"></div>
+            </button>
+
+            <div class="results-section" id="resultsArea" style="display: none;">
+                <h2>Inference Results</h2>
+                
+                <div class="prediction-card">
+                    <span class="label">Detected Condition</span>
+                    <h3 id="predClass">Healthy</h3>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="predConfidenceBar"></div>
+                    </div>
+                    <span class="confidence-text" id="predConfidence">99.8% Confidence</span>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon latency-icon">⚡</div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="valLatency">42<small>ms</small></span>
+                            <span class="metric-label">Latency (< 100ms Target)</span>
+                        </div>
+                        <div class="status-dot green" id="statusLatency"></div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon size-icon">📦</div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="valSize">3.4<small>MB</small></span>
+                            <span class="metric-label">Model Size (< 50MB Target)</span>
+                        </div>
+                        <div class="status-dot green" id="statusSize"></div>
+                    </div>
+
+                    <div class="metric-card highlight">
+                        <div class="metric-icon power-icon">🔋</div>
+                        <div class="metric-data">
+                            <span class="metric-value" id="valPower">92</span>
+                            <span class="metric-label">Power Efficiency Score (0-100)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
